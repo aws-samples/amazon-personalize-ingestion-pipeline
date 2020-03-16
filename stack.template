@@ -363,7 +363,7 @@ Resources:
         CodeUri: lambda-history-api/
         Events:
           HttpPost:
-            Type: Api
+            Type: HttpApi
             Properties:
               Path: '/history/{userId}'
               Method: get
@@ -542,7 +542,7 @@ Resources:
         CodeUri: lambda-recommendation-api/
         Events:
           HttpGet:
-              Type: Api
+              Type: HttpApi
               Properties:
                 Path: '/recommendation/{userId}'
                 Method: get
@@ -571,7 +571,7 @@ Outputs:
         CustomerInteractionStream
   PersonalizationApiURL:
     Description: "API endpoint URL for Prod environment"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"
   InteractionApiURL:
     Description: "API endpoint URL for Prod environment"
     Value: !Sub "https://${CustomerInteractionAPI}.execute-api.${AWS::Region}.amazonaws.com/prod/interaction/"
